@@ -12,9 +12,12 @@ Unfortunately I only have {{money.wallet}} Yen in my wallet at the moment.
     I can finally buy Onigiri!
 
     @if money.wallet > money_wallet_minumum
-        I also have money in my wallet~
-    @elseif status.wallet > money_wallet_minumum && status.saving
-        I have money in my wallet but I'm saving it for later.
+        @if status.saving
+            I have money in my wallet but I'm saving it for later.
+            I can't wait to buy special udon ramen~
+        @else
+            I also have money in my wallet~
+        @endif
     @endif
 
     @if status.hunger
@@ -22,4 +25,8 @@ Unfortunately I only have {{money.wallet}} Yen in my wallet at the moment.
     @endif
 @else
     Wuh... Why no one giving me anything?!
+
+    @if status.starving && money.offering_box == 0
+        Huaa... I guess I should eat Yukari's food again.
+    @endif
 @endif
