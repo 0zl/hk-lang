@@ -1,0 +1,25 @@
+Often you find yourself in a situation where you need to do something
+
+# this is a comment for anyone wondering. (skipped)
+
+@var money_wallet_minumum 10
+
+The name is {{name}}. I have {{money.offering_box}} Yen in my offering box.
+Unfortunately I only have {{money.wallet}} Yen in my wallet at the moment.
+
+@if money.offering_box > 0
+    Finally! I have {{money.offering_box}} Yen in my offering box.
+    I can finally buy Onigiri!
+
+    @if money.wallet > money_wallet_minumum
+        I also have money in my wallet~
+    @elseif status.wallet > money_wallet_minumum && status.saving
+        I have money in my wallet but I'm saving it for later.
+    @endif
+
+    @if status.hunger
+        I'm so hungry! Let's eat some food!
+    @endif
+@else
+    Wuh... Why no one giving me anything?!
+@endif
